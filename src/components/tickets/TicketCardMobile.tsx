@@ -49,8 +49,8 @@ function TicketCardMobileComponent({ ticket, isSelected }: TicketCardMobileProps
     <div
       className={`p-3.5 rounded-xl border transition-all ${
         isSelected
-          ? 'bg-indigo-50/70 border-indigo-300 dark:bg-indigo-950/40 dark:border-indigo-800'
-          : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
+          ? 'bg-violet-50/80 border-violet-300 dark:bg-violet-950/40 dark:border-violet-700 shadow-sm'
+          : 'bg-white dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 shadow-sm'
       }`}
     >
       <div className="flex items-start justify-between gap-2 mb-2">
@@ -59,9 +59,9 @@ function TicketCardMobileComponent({ ticket, isSelected }: TicketCardMobileProps
             type="checkbox"
             checked={isSelected}
             onChange={() => dispatch(toggleSelectTicket(ticket.id))}
-            className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer h-4 w-4"
+            className="rounded border-slate-300 dark:border-slate-700 text-violet-600 focus:ring-violet-500 cursor-pointer h-4 w-4"
           />
-          <Link href={`/tickets/${ticket.id}`} className="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">
+          <Link href={`/tickets/${ticket.id}`} className="font-mono text-xs font-bold text-violet-600 dark:text-violet-400">
             {ticket.external_id}
           </Link>
           <PlanBadge plan={ticket.customer_plan} />
@@ -70,7 +70,7 @@ function TicketCardMobileComponent({ ticket, isSelected }: TicketCardMobileProps
       </div>
 
       <Link href={`/tickets/${ticket.id}`} className="block group mb-2.5">
-        <h3 className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 line-clamp-2">
+        <h3 className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 line-clamp-2 transition-colors">
           {ticket.subject || <span className="italic text-slate-400">(No subject)</span>}
         </h3>
       </Link>
@@ -79,8 +79,8 @@ function TicketCardMobileComponent({ ticket, isSelected }: TicketCardMobileProps
         <PriorityBadge priority={ticket.priority} />
         <CategoryBadge category={ticket.category} />
         {ticket.triage_decision === 'manual_review' && (
-          <span className="px-1.5 py-0.5 rounded text-[10px] bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 font-semibold">
-            Needs Review
+          <span className="px-2 py-0.5 rounded text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold">
+            ⚠️ Review
           </span>
         )}
       </div>
@@ -88,14 +88,14 @@ function TicketCardMobileComponent({ ticket, isSelected }: TicketCardMobileProps
       <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
         <div className="flex items-center gap-1 text-slate-600 dark:text-slate-400">
           {ticket.assigned_to ? (
-            <span className="flex items-center gap-1 font-medium">
-              <User className="w-3.5 h-3.5" />
+            <span className="flex items-center gap-1 px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-medium">
+              <User className="w-3.5 h-3.5 text-cyan-500" />
               <span>{ticket.assigned_to}</span>
             </span>
           ) : (
             <button
               onClick={handleQuickClaim}
-              className="flex items-center gap-1 px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 font-semibold text-[11px]"
+              className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold text-xs shadow-sm shadow-violet-500/25 active:scale-95 transition-all"
             >
               <Hand className="w-3 h-3" />
               <span>Claim</span>

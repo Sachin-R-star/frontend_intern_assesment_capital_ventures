@@ -207,14 +207,14 @@ export default function AIReviewQueuePage() {
           return (
             <div
               key={ticket.id}
-              className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm space-y-3 transition-all"
+              className="bg-white/85 dark:bg-[#0F172A]/85 backdrop-blur-md rounded-2xl border border-slate-200/90 dark:border-slate-800/90 p-4 sm:p-5 shadow-sm space-y-3.5 transition-all"
             >
               {/* Card Header */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100 dark:border-slate-800">
                 <div className="flex flex-wrap items-center gap-2">
                   <Link
                     href={`/tickets/${ticket.id}`}
-                    className="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline"
+                    className="font-mono text-xs font-bold text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-950/60 border border-violet-200 dark:border-violet-800/60 px-2 py-0.5 rounded-md hover:underline"
                   >
                     {ticket.external_id}
                   </Link>
@@ -229,7 +229,7 @@ export default function AIReviewQueuePage() {
                 {ticket.review_reason && (
                   <div className="text-xs">
                     <span className="text-slate-500 font-medium mr-1.5">Flag Reason:</span>
-                    <span className="font-mono text-[11px] bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-200 px-2 py-0.5 rounded font-semibold">
+                    <span className="font-mono text-[11px] bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-200 px-2 py-0.5 rounded font-bold">
                       {ticket.review_reason}
                     </span>
                   </div>
@@ -242,8 +242,8 @@ export default function AIReviewQueuePage() {
                   {ticket.subject || <span className="italic text-slate-400">(No subject)</span>}
                 </h3>
 
-                <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-300">
-                  <span className="font-bold text-slate-500 block mb-1">AI Generated Summary:</span>
+                <div className="p-3 rounded-xl bg-violet-50/40 dark:bg-violet-950/20 border border-violet-200/50 dark:border-violet-900/40 text-xs text-slate-700 dark:text-slate-300">
+                  <span className="font-bold text-violet-600 dark:text-violet-400 block mb-1">AI Generated Summary:</span>
                   <SafeHtml html={ticket.summary} fallbackText="(Summary not available or flagged)" />
                 </div>
               </div>
@@ -253,7 +253,7 @@ export default function AIReviewQueuePage() {
                 <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
                   <Link
                     href={`/tickets/${ticket.id}`}
-                    className="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-indigo-600"
+                    className="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
                   >
                     View Full Customer Message →
                   </Link>
@@ -263,7 +263,7 @@ export default function AIReviewQueuePage() {
                     <button
                       onClick={() => startOverride(ticket)}
                       disabled={isSubmitting}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 transition-colors"
                     >
                       <Edit3 className="w-3.5 h-3.5" />
                       <span>Change Category / Priority</span>
@@ -273,7 +273,7 @@ export default function AIReviewQueuePage() {
                     <button
                       onClick={() => handleAcceptAi(ticket)}
                       disabled={isSubmitting}
-                      className="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition-colors"
+                      className="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-bold rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-md shadow-emerald-600/20 transition-all"
                     >
                       {isSubmitting ? (
                         <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -376,7 +376,7 @@ export default function AIReviewQueuePage() {
                     <button
                       onClick={() => handleOverrideSubmit(ticket)}
                       disabled={isSubmitting}
-                      className="flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold rounded-lg bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white shadow-sm"
+                      className="flex items-center gap-1.5 px-4 py-1.5 text-xs font-bold rounded-xl bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-600 hover:from-violet-500 hover:to-indigo-500 disabled:opacity-50 text-white shadow-md shadow-violet-600/25 transition-all"
                     >
                       {isSubmitting && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
                       <span>Save and Remove from Queue</span>

@@ -94,11 +94,13 @@ export function BulkActionBar() {
   };
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-[95%] max-w-2xl bg-slate-900 text-white rounded-2xl p-4 shadow-2xl border border-slate-700 animate-slide-up">
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-[95%] max-w-2xl bg-slate-900/95 dark:bg-[#0B0F19]/95 text-white rounded-2xl p-3 sm:p-4 shadow-2xl border border-violet-500/30 backdrop-blur-xl animate-slide-up ring-1 ring-violet-500/20">
       <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <CheckSquare className="w-5 h-5 text-indigo-400" />
-          <span className="font-semibold text-sm">
+          <div className="w-7 h-7 rounded-lg bg-violet-500/20 flex items-center justify-center text-violet-400">
+            <CheckSquare className="w-4 h-4" />
+          </div>
+          <span className="font-bold text-xs sm:text-sm text-slate-100">
             {selectedIds.length} ticket{selectedIds.length > 1 ? 's' : ''} selected
           </span>
         </div>
@@ -108,7 +110,7 @@ export function BulkActionBar() {
           <button
             onClick={handleBulkClaim}
             disabled={isProcessing}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-xs font-semibold rounded-lg shadow transition-colors"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 disabled:opacity-50 text-white text-xs font-bold rounded-xl shadow-md shadow-violet-600/30 transition-all"
           >
             {isProcessing ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Hand className="w-3.5 h-3.5" />}
             <span>Claim All</span>
@@ -118,9 +120,9 @@ export function BulkActionBar() {
           <button
             onClick={() => handleBulkStatus('in_progress')}
             disabled={isProcessing}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 disabled:opacity-50 text-white text-xs font-semibold rounded-lg transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 disabled:opacity-50 text-cyan-300 text-xs font-semibold rounded-xl transition-colors"
           >
-            <PlayCircle className="w-3.5 h-3.5 text-blue-400" />
+            <PlayCircle className="w-3.5 h-3.5 text-cyan-400" />
             <span>In Progress</span>
           </button>
 
@@ -128,7 +130,7 @@ export function BulkActionBar() {
           <button
             onClick={() => handleBulkStatus('resolved')}
             disabled={isProcessing}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-700 hover:bg-emerald-600 disabled:opacity-50 text-white text-xs font-semibold rounded-lg shadow transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white text-xs font-bold rounded-xl shadow-md shadow-emerald-600/25 transition-all"
           >
             <CheckCircle className="w-3.5 h-3.5" />
             <span>Resolve</span>
@@ -138,7 +140,7 @@ export function BulkActionBar() {
           <button
             onClick={() => dispatch(clearSelectedTickets())}
             disabled={isProcessing}
-            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors ml-1"
             title="Cancel selection"
           >
             <X className="w-4 h-4" />
@@ -148,7 +150,7 @@ export function BulkActionBar() {
 
       {/* Results details drawer if bulk action completed */}
       {resultSummary && (
-        <div className="mt-3 pt-3 border-t border-slate-700 text-xs space-y-1 max-h-36 overflow-y-auto">
+        <div className="mt-3 pt-3 border-t border-slate-800 text-xs space-y-1 max-h-36 overflow-y-auto">
           <div className="font-semibold text-slate-300">
             Results: {resultSummary.successCount} succeeded, {resultSummary.failedCount} failed
           </div>

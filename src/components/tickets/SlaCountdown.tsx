@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { calculateSla, SlaInfo } from '@/lib/utils/sla';
 import { TicketPriority, TicketStatus } from '@/lib/api/types';
-import { AlertCircle, Clock, CheckCircle2 } from 'lucide-react';
+import { AlertCircle, Clock, CheckCircle2, Flame } from 'lucide-react';
 
 interface SlaCountdownProps {
   createdAt: string;
@@ -17,7 +17,6 @@ export function SlaCountdown({ createdAt, priority, ticketStatus }: SlaCountdown
   );
 
   useEffect(() => {
-    // If ticket is already resolved or closed, clock doesn't need to tick every second
     if (ticketStatus === 'resolved' || ticketStatus === 'closed') {
       setSla(calculateSla(createdAt, priority, ticketStatus, new Date()));
       return;
@@ -32,8 +31,8 @@ export function SlaCountdown({ createdAt, priority, ticketStatus }: SlaCountdown
 
   if (sla.status === 'completed') {
     return (
-      <span className="inline-flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400 font-medium">
-        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-xs font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20">
+        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
         <span>{sla.label}</span>
       </span>
     );
@@ -41,8 +40,8 @@ export function SlaCountdown({ createdAt, priority, ticketStatus }: SlaCountdown
 
   if (sla.status === 'late') {
     return (
-      <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-red-100 text-red-800 dark:bg-red-950/70 dark:text-red-300 border border-red-300 dark:border-red-900 font-mono text-xs font-semibold">
-        <AlertCircle className="w-3.5 h-3.5 text-red-600 animate-pulse" />
+      <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-rose-500/20 text-rose-300 border border-rose-500/50 shadow-[0_0_10px_rgba(244,63,94,0.3)] font-mono text-xs font-bold animate-pulse">
+        <AlertCircle className="w-3.5 h-3.5 text-rose-400 shrink-0" />
         <span>Late ({sla.formattedCountdown})</span>
       </div>
     );
@@ -50,8 +49,8 @@ export function SlaCountdown({ createdAt, priority, ticketStatus }: SlaCountdown
 
   if (sla.status === 'at_risk') {
     return (
-      <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-amber-100 text-amber-900 dark:bg-amber-950/70 dark:text-amber-300 border border-amber-300 dark:border-amber-900 font-mono text-xs font-semibold">
-        <Clock className="w-3.5 h-3.5 text-amber-600 animate-spin" style={{ animationDuration: '3s' }} />
+      <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/50 shadow-[0_0_8px_rgba(245,158,11,0.25)] font-mono text-xs font-bold">
+        <Flame className="w-3.5 h-3.5 text-amber-400 shrink-0 animate-bounce" />
         <span>At Risk ({sla.formattedCountdown})</span>
       </div>
     );
@@ -59,16 +58,16 @@ export function SlaCountdown({ createdAt, priority, ticketStatus }: SlaCountdown
 
   if (sla.status === 'future') {
     return (
-      <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-blue-50 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 border border-blue-200 dark:border-blue-900 text-xs">
-        <Clock className="w-3.5 h-3.5 text-blue-500" />
+      <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-sky-500/15 text-sky-300 border border-sky-500/35 font-mono text-xs">
+        <Clock className="w-3.5 h-3.5 text-sky-400 shrink-0" />
         <span>Future ({sla.formattedCountdown})</span>
       </div>
     );
   }
 
   return (
-    <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900 font-mono text-xs">
-      <Clock className="w-3.5 h-3.5 text-emerald-600" />
+    <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-300 border border-emerald-500/35 shadow-[0_0_6px_rgba(16,185,129,0.15)] font-mono text-xs font-medium">
+      <Clock className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
       <span>{sla.formattedCountdown}</span>
     </div>
   );

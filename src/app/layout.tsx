@@ -23,9 +23,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+      <body className="min-h-screen text-slate-900 dark:text-slate-100 flex flex-col antialiased selection:bg-violet-500 selection:text-white">
         <ReduxProvider>
-          <Suspense fallback={<div className="h-14 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900" />}>
+          <Suspense fallback={<div className="h-14 border-b border-slate-200/60 dark:border-slate-800/80 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md" />}>
             <Header />
           </Suspense>
           <div className="flex-1 pb-6">{children}</div>
