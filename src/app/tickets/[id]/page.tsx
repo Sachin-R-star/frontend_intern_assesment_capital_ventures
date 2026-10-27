@@ -292,7 +292,7 @@ function TicketDetailContent({ paramsPromise }: { paramsPromise: Promise<{ id: s
             onClick={handleRetriage}
             disabled={isRetriaging}
             className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 disabled:opacity-50 text-slate-800 dark:text-slate-200 text-xs sm:text-sm font-semibold rounded-xl border border-amber-500/40 shadow-sm transition-all"
-            title="Re-run AI classifier using server-side secret key"
+            title="Re-run AI classification"
           >
             {isRetriaging ? <Loader2 className="w-4 h-4 animate-spin text-amber-500" /> : <Sparkles className="w-4 h-4 text-amber-500" />}
             <span>Re-run AI</span>

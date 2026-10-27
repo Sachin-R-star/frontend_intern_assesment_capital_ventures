@@ -18,12 +18,12 @@ export const TEST_TICKETS_RAW = [
     triage_decision: "auto_accept" as TriageDecision,
     review_reason: null,
   },
-  // Note: T-2001 appears twice in the PDF test data on page 5-6!
+  // T-2001 duplicate entry from brief (tests keying by internal id rather than external_id)
   {
-    external_id: "T-2001-dup",
+    external_id: "T-2001",
     customer_id: "C-12",
     customer_plan: "enterprise",
-    subject: "SSO login down for whole team (duplicate entry in brief)",
+    subject: "SSO login down for whole team",
     body: "Nobody on our team can log in with SSO since 9 AM.",
     attachment_url: null,
     created_at: "2026-09-20T09:15:00Z",
