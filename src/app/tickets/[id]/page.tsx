@@ -233,11 +233,11 @@ function TicketDetailContent({ paramsPromise }: { paramsPromise: Promise<{ id: s
   const attachmentSafety = validateAttachmentUrl(ticket.attachment_url);
 
   return (
-    <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+    <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-4">
       {/* Toast Alert Banner */}
       {toastMessage && (
         <div
-          className={`p-4 rounded-xl flex items-center justify-between text-sm shadow-md animate-fade-in ${
+          className={`p-3 rounded-xl flex items-center justify-between text-xs sm:text-sm shadow-md animate-fade-in ${
             toastMessage.type === 'error'
               ? 'bg-rose-50 text-rose-800 border border-rose-200 dark:bg-rose-950/80 dark:text-rose-200 dark:border-rose-900'
               : 'bg-emerald-50 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/80 dark:text-emerald-200 dark:border-emerald-900'
@@ -269,7 +269,7 @@ function TicketDetailContent({ paramsPromise }: { paramsPromise: Promise<{ id: s
             <button
               onClick={handleClaim}
               disabled={isClaiming}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white text-xs sm:text-sm font-semibold rounded-lg shadow transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white text-xs sm:text-sm font-semibold rounded-lg shadow transition-colors"
             >
               {isClaiming ? <Loader2 className="w-4 h-4 animate-spin" /> : <Hand className="w-4 h-4" />}
               <span>{ticket.assigned_to ? `Take Over from ${ticket.assigned_to}` : 'Claim Ticket'}</span>
@@ -290,9 +290,9 @@ function TicketDetailContent({ paramsPromise }: { paramsPromise: Promise<{ id: s
       </div>
 
       {/* Main Ticket Card */}
-      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm space-y-6">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 sm:p-5 shadow-sm space-y-4">
         {/* Ticket Header */}
-        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-6 border-b border-slate-100 dark:border-slate-800">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800">
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               <span className="font-mono text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">

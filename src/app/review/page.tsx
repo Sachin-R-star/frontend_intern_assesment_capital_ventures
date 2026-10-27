@@ -129,19 +129,19 @@ export default function AIReviewQueuePage() {
   };
 
   return (
-    <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+    <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-4">
       {/* Title */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <div className="flex items-center gap-2">
-            <div className="p-2 rounded-lg bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300">
-              <ShieldAlert className="w-5 h-5" />
+            <div className="p-1.5 rounded-lg bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300">
+              <ShieldAlert className="w-4 h-4" />
             </div>
-            <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
               AI Triage Review Queue
             </h1>
           </div>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
             Review tickets where the automated classifier requested human oversight before routing.
           </p>
         </div>
@@ -200,14 +200,14 @@ export default function AIReviewQueuePage() {
       )}
 
       {/* List of Review Tickets */}
-      <div className="space-y-4">
+      <div className="space-y-3">
         {reviewTickets.map((ticket) => {
           const isEditing = editingTicketId === ticket.id;
 
           return (
             <div
               key={ticket.id}
-              className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm space-y-4 transition-all"
+              className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm space-y-3 transition-all"
             >
               {/* Card Header */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100 dark:border-slate-800">

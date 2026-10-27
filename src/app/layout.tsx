@@ -25,10 +25,10 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
         <ReduxProvider>
-          <Suspense fallback={<div className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900" />}>
+          <Suspense fallback={<div className="h-14 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900" />}>
             <Header />
           </Suspense>
-          <div className="flex-1 pb-16">{children}</div>
+          <div className="flex-1 pb-6">{children}</div>
         </ReduxProvider>
       </body>
     </html>

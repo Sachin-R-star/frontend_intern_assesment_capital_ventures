@@ -62,29 +62,29 @@ function TicketTableRowComponent({ ticket, isSelected }: TicketTableRowProps) {
       }`}
     >
       {/* Checkbox for bulk actions */}
-      <td className="w-10 px-3 py-3 text-center">
+      <td className="w-10 px-3 py-2 text-center">
         <input
           type="checkbox"
           checked={isSelected}
           onChange={() => dispatch(toggleSelectTicket(ticket.id))}
-          className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer h-4 w-4"
+          className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer h-3.5 w-3.5"
           aria-label={`Select ticket ${ticket.external_id}`}
         />
       </td>
 
       {/* Ticket ID & Subject */}
-      <td className="px-3 py-3 max-w-[280px]">
+      <td className="px-3 py-2 max-w-[280px]">
         <Link href={`/tickets/${ticket.id}`} className="group block">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <span className="font-mono text-xs font-semibold text-slate-500 group-hover:text-indigo-600 dark:text-slate-400 dark:group-hover:text-indigo-400">
               {ticket.external_id}
             </span>
             {ticket.triage_decision === 'manual_review' && (
-              <span className="inline-block w-2 h-2 rounded-full bg-amber-500" title="Needs manual review" />
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-500" title="Needs manual review" />
             )}
           </div>
           <div
-            className="text-sm font-medium text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 truncate max-w-[260px]"
+            className="text-xs sm:text-sm font-medium text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 truncate max-w-[260px]"
             title={ticket.subject || '(No subject)'}
           >
             {ticket.subject || <span className="italic text-slate-400">(No subject)</span>}
@@ -93,17 +93,17 @@ function TicketTableRowComponent({ ticket, isSelected }: TicketTableRowProps) {
       </td>
 
       {/* Plan */}
-      <td className="px-3 py-3 whitespace-nowrap">
+      <td className="px-3 py-2 whitespace-nowrap">
         <PlanBadge plan={ticket.customer_plan} />
       </td>
 
       {/* Category */}
-      <td className="px-3 py-3 whitespace-nowrap">
+      <td className="px-3 py-2 whitespace-nowrap">
         <CategoryBadge category={ticket.category} />
       </td>
 
       {/* Priority */}
-      <td className="px-3 py-3 whitespace-nowrap">
+      <td className="px-3 py-2 whitespace-nowrap">
         <div className="flex items-center gap-1.5">
           <PriorityBadge priority={ticket.priority} />
           {ticket.ai_priority && ticket.ai_priority !== ticket.priority && (
@@ -118,12 +118,12 @@ function TicketTableRowComponent({ ticket, isSelected }: TicketTableRowProps) {
       </td>
 
       {/* Status */}
-      <td className="px-3 py-3 whitespace-nowrap">
+      <td className="px-3 py-2 whitespace-nowrap">
         <StatusBadge status={ticket.status} />
       </td>
 
       {/* Agent */}
-      <td className="px-3 py-3 whitespace-nowrap text-xs">
+      <td className="px-3 py-2 whitespace-nowrap text-xs">
         {ticket.assigned_to ? (
           <span className="inline-flex items-center gap-1 text-slate-700 dark:text-slate-300 font-medium">
             <User className="w-3.5 h-3.5 text-slate-400" />
@@ -132,7 +132,7 @@ function TicketTableRowComponent({ ticket, isSelected }: TicketTableRowProps) {
         ) : (
           <button
             onClick={handleQuickClaim}
-            className="inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/60 dark:hover:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 transition-colors"
+            className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold rounded bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/60 dark:hover:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 transition-colors"
             title="Claim this ticket now"
           >
             <Hand className="w-3 h-3" />
@@ -142,12 +142,12 @@ function TicketTableRowComponent({ ticket, isSelected }: TicketTableRowProps) {
       </td>
 
       {/* Created At */}
-      <td className="px-3 py-3 whitespace-nowrap text-xs text-slate-500 dark:text-slate-400">
+      <td className="px-3 py-2 whitespace-nowrap text-xs text-slate-500 dark:text-slate-400">
         {formattedDate}
       </td>
 
       {/* SLA Countdown */}
-      <td className="px-3 py-3 whitespace-nowrap">
+      <td className="px-3 py-2 whitespace-nowrap">
         <SlaCountdown
           createdAt={ticket.created_at}
           priority={ticket.priority}
